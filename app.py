@@ -1,3 +1,4 @@
+import os
 from flask import Flask, render_template, request, jsonify
 import pandas as pd
 import numpy as np
@@ -56,4 +57,6 @@ def calculate():
     return jsonify(result_text=result_text, plot_url=plot_url)
 
 if __name__ == '__main__':
-    app.run()
+    port = int(os.environ.get("PORT", 8080))
+    app.run(host='0.0.0.0', port=port)
+
